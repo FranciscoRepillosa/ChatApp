@@ -2,6 +2,9 @@ const path = require("path");
 const http = require("http");
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
+dotenv.config({ path: "./config.env" });
+
 
 
 const app = express();
@@ -11,18 +14,18 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, "public")));
 
 const userRoutes = require("./user/routes.config");
-const teamRoutes = require("./teams/routes.config");
+const invitationRoutes = require("./invitation/routes.config");
 const taskRoutes = require("./task/routes.config");
+const companyRoutes = require("./company/routes.config");
 
 app.use("/user", userRoutes);
-app.use("/teams", teamRoutes);
+app.use("/invitation", invitationRoutes);
 app.use("/task", taskRoutes);
-console.log(taskRoutes);
+app.use("/company", companyRoutes);
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/ManagmentApp', {
+mongoose.connect('mongodb://localhost/TaskApp', {
     useNewUrlParser: true,
-    useFindAndModify: false,
     useUnifiedTopology: true
 });
 
@@ -33,9 +36,8 @@ db.once('open', function() {
   console.log(" we're connected!! ");
 });
 
+const port = process.env.PORT || 4000;
 
-const port = process.env.PORT || 3000;
-
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`server running on ${port}`);
 })

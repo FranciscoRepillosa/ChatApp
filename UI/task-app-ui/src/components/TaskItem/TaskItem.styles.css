@@ -1,0 +1,29 @@
+
+
+body {
+  margin: 0;
+}
+
+.taskList {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+  }
+
+.bullet {
+    width: 45px;
+    height: 45px;
+}
+
+.hr-li {
+    margin-left: 6.5%;
+}
+
+.li-task {
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.task-text {
+  padding-top: 14px;
+}

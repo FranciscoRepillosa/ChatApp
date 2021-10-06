@@ -14,13 +14,9 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "password is required"]
     },
-    teams : [{
-        team_id: String,
-        role: {
-            type: String,
-            enum: ["admin", "member"]
-        }
-    }]
+	companyId: String,
+    companyName: String
+	
 });
 
 UserSchema.pre("save", async function (next) {
@@ -28,6 +24,10 @@ UserSchema.pre("save", async function (next) {
         
     next();
 })
+
+UserSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
+    return await bcrypt.compare(candidatePassword, userPassword);
+}
 
 const User = mongoose.model('User', UserSchema);
 
