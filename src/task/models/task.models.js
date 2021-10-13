@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 
 const TaskSchema = new mongoose.Schema({
     projectId: String,
+    assignedName: String,
+    adminName: String,
     assignedId: String,
 	adminId: String,
     name: String,

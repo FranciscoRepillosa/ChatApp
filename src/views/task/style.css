@@ -83,14 +83,17 @@ body {
 .newTask-form-container {
   margin-top: 115px;
   margin-bottom: 30px;
-  margin-left: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.dateAndAsigned-container {    
+.dateAndAsigned-container2 {    
   margin-bottom: 30px;
   margin-right: 5%;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20% 80%;
+  height: 100px;
 }
 
 .card-text {
