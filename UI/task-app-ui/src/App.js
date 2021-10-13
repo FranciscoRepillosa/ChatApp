@@ -7,6 +7,8 @@ import SignupPage from "./pages/SignUpPage/SignUpPage.component";
 import NewCompanyPage from "./pages/NewCompanyPage/NewCompanyPage.component";
 import CreateInvitationPage from "./pages/CreateInvitationPage/CreateInvitationPage.component ";
 import InvitationPage from "./pages/InvitationPage/InvitationPage.component";
+import NewTaskPage from "./pages/newTaskPage/newTaskPage.component";
+import TaskDescriptionPage from "./pages/TaskDescriptionPage/TaskDescriptionPage.component";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
           <Route exact={true} path="/newCompany" component={NewCompanyPage}/> 
           <Route exact={true} path="/createInvitation" component={CreateInvitationPage}/>
           <Route exact={true} path="/invitations" component={InvitationPage}/>
+          <Route exact={true} path="/newTask" component={NewTaskPage}/>
+          <Route exact={true} path="/task/:taskId" component={TaskDescriptionPage}/>
         </Switch>
       </Router>
     </div>

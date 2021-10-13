@@ -45,8 +45,8 @@ const LoginPage = (props) => {
 
     return (
             <form className="form-container">
-                    <FormInput type={"text"} name={"email"} textContent={"Email"} onInputChange={handleInputChange} />
-                    <FormInput type={"text"} name={"password"} textContent={"Password"} onInputChange={handleInputChange} />
+                    <FormInput type={"text"} name={"email"} textContent={"Email"} inputStyleList={"form-input"} LabelStyleList={"form-label"} onInputChange={handleInputChange} />
+                    <FormInput type={"text"} name={"password"} textContent={"Password"} inputStyleList={"form-input"} LabelStyleList={"form-label"} onInputChange={handleInputChange} />
                     <FormInput type={"submit"} submitHandler={handleSubmit} textContent={"LOGIN"} />
             </form>
         

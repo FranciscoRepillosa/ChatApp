@@ -40,7 +40,7 @@ const CreateInvitationPage = (props) => {
 
     return (
             <form className="form-container">
-                    <FormInput type={"text"} name={"guestEmail"} textContent={"Email"} onInputChange={handleInputChange} />
+                    <FormInput type={"text"} name={"guestEmail"} textContent={"Email"} inputStyleList={"form-input"} LabelStyleList={"form-label"} onInputChange={handleInputChange} />
                     <FormInput type={"submit"} submitHandler={handleSubmit} textContent={"INVITE"} />
             </form>
         

@@ -1,0 +1,27 @@
+.dateAndAsigned-container2 {    
+    margin-bottom: 30px;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 20% 80%;
+    height: 100px;
+  }
+
+  .newTask-form-container {
+    margin-top: 115px;
+    margin-bottom: 30px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+.task-description-container {
+  background-color: #f6e9f7;
+    border-radius: 20px;
+    padding: 15px;
+    border-right-style: solid;
+    border-right-width: 5px;
+    border-right-color: #b9b5b5;
+    border-bottom-style: solid;
+    border-bottom-width: 5px;
+    border-bottom-color: #b9b5b5;
+}

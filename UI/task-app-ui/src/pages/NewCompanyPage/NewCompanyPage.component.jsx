@@ -41,7 +41,7 @@ const LoginPage = (props) => {
 
     return (
             <form className="form-container">
-                    <FormInput type={"text"} name={"companyName"} textContent={"Company Name"} onInputChange={handleInputChange} />
+                    <FormInput type={"text"} name={"companyName"}  inputStyleList={"form-input"} LabelStyleList={"form-label"} textContent={"Company Name"} onInputChange={handleInputChange} />
                     <FormInput type={"submit"} submitHandler={handleSubmit} textContent={"CREATE"} />
             </form>
         
