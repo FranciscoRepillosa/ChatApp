@@ -1,0 +1,23 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/styles/tasks.css')
+  link(rel='stylesheet' href='/styles/navbar.css')
+  title Document
+include ../includes/navbar
+.mainTitle
+  h2 My tasks
+hr
+ul
+each task in userTasks
+  li.li-task
+    img.bullet(src='/blank-check-bullet.svg')
+    span.task-text=  task.name
+    span.task-text.id=  task._id 
+  hr.hr-li
+script(src='/scripts/task.js')
+script(src='/scripts/navbar.js')
+
+  

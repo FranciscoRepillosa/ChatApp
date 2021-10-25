@@ -1,0 +1,25 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/styles/taskDescriptionPage.css')
+  link(rel='stylesheet' href='/styles/navbar.css')
+  script(src='https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js')
+  title Document
+include ../includes/navbar
+.newTask-form-container
+  h1= task.name
+  .dateAndAsigned-container2
+    h6 Assigned
+    h2= task.assignedName
+    h6 due date
+    h2= FormatedDueDate
+    h6.id#id= task._id 
+  p= task.description
+  p#role= userRole
+  .button-container
+    input#inputButton.form-button(type='submit' value='DONE')
+script(src='/scripts/taskDescriptionPage.js')
+script(src='/scripts/navbar.js')
+

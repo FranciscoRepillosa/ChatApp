@@ -1,0 +1,16 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/styles/signup.css')
+  link(rel='stylesheet' href='/styles/navbar.css')
+  title New Company
+include ../includes/navbar
+.form-container#form-container
+  label.form-label(for='companyName') Company Name
+  input#companyName.form-input(type='text' name='companyName')
+  .button-container
+    input#inputButton.form-button(type='submit' value='CREATE')
+script(src='/scripts/navbar.js')
+script(src='/scripts/newCompany.js')

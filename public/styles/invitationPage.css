@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+  }
+
+  .card-text {
+    margin-left: 10%;
+  }
+  
+  .card {
+      border-color: #e5e5e5;
+      border-style: solid;
+      margin-left: 10%;
+      margin-right: 10%;
+      border-radius: 20px;
+  }
+
+  .button-container {
+    text-align: center;
+  }
+  
+  .form-button {
+    text-align: center;
+    all:unset;
+    background-color: rgb(118 53 199);
+    border-radius: 35px;
+    padding: 10px;
+    width:80%;
+    color: white;
+  }

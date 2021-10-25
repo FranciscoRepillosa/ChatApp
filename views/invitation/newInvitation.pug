@@ -1,0 +1,21 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/styles/signup.css')
+  link(rel='stylesheet' href='/styles/navbar.css')
+  title Invite
+include ../includes/navbar
+.form-container#form-container
+  label.form-label(for='guestName') Guest Email
+  input#guestEmail.form-input(type='text' name='guestName')
+  label.form-label(for='role') Role
+  input#role.form-input(type='text' name='role')
+  label.form-label(for='departament') Departament 
+  input#departament.form-input(type='text' name='departament')
+  .button-container
+    input#inputButton.form-button(type='submit' value='CREATE')
+
+script(src='/scripts/newInvitation.js')
+script(src='/scripts/navbar.js')

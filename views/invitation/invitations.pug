@@ -1,0 +1,20 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='styles/invitationPage.css')
+  link(rel='stylesheet' href='/styles/navbar.css')
+  title invitations
+include ../includes/navbar
+.form-container
+  each invitation in Invitations
+    .card
+      h3.card-text= "Company: " + invitation.companyName
+      h3.card-text= "Host: " + invitation.hostName
+      h3#invitationId.card-text= "Id: " + invitation._id
+      .button-container
+        input.inputButton.form-button(type='submit' value='ACCEPT')
+
+script(src='/scripts/invitationPage.js')
+script(src='/scripts/navbar.js')

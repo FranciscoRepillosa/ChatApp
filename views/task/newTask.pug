@@ -1,0 +1,20 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/styles/newTask.css')
+  link(rel='stylesheet' href='/styles/navbar.css')
+  title Your Tasks
+include ../includes/navbar
+.newTask-form-container
+  input#taskName.newTask-form-input.text-size-2(type='text' placeholder='Task name...' name='' )
+  input#assignedName.newTask-form-input(placeholder='Assigned' type='text' name='')
+  label(for='dueDate') Due date :
+  input#dueDate.taskDate(type='date' name='')
+  textarea#taskDescription.m-top(placeholder='Task description')
+  .button-container
+    input#inputButton.form-button(type='submit' value='CREATE')
+script(src='/scripts/newTask.js')
+script(src='/scripts/navbar.js')
+

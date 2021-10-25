@@ -1,0 +1,20 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/styles/signup.css')
+  title Document
+.form-container#form-container
+  label.form-label(for='name') name
+  input#name.form-input(type='text' name='name')
+  label.form-label(for='email') email
+  input#email.form-input(type='email' name='email')
+  label.form-label(for='password') password
+  input#password.form-input(type='password' name="password")
+  label.form-label(for='repeatPassword') repeat password
+  input#repeatPassword.form-input(type='password' name="repeatPassword")
+  .button-container
+    input#inputButton.form-button(type='submit' value='Login')
+
+script(src='/scripts/signup.js')
