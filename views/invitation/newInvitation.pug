@@ -11,7 +11,10 @@ include ../includes/navbar
   label.form-label(for='guestName') Guest Email
   input#guestEmail.form-input(type='text' name='guestName')
   label.form-label(for='role') Role
-  input#role.form-input(type='text' name='role')
+  select#role(name='role')
+    option(value='admin') admin
+    option(value='supervisor') supervisor
+    option(value='user') user
   label.form-label(for='departament') Departament 
   input#departament.form-input(type='text' name='departament')
   .button-container

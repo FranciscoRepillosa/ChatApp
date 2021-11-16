@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const TaskSchema = new mongoose.Schema({
+    departament: String,
     projectId: String,
     assignedName: String,
     adminName: String,

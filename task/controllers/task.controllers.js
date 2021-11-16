@@ -7,11 +7,17 @@ const { login } = require("../../user/controllers/auth.controller");
 exports.createTask = async (req, res) => {
     try {
 
-            const assigned = await User.findOne({name: req.body.assignedName, companyId: req.user.companyId, departament: req.user.departament});
+            const assigned = await User.findOne({name: req.body.assignedName, companyId: req.user.companyId});
 
             if (assigned === null) {
+                console.log("no assigned")
                 return next( new AppError('there is no user with this credentials in your company', 402));
             }
+
+            if (assigned.departament !== req.user.departament && req.user.role !== "admin") {
+                console.log("diferent departament");
+                return next( new AppError("you can't assign tasks to users that are not in your same departament ", 402));
+            }          
 
             const taskContent ={
                 name: req.body.taskName,
@@ -22,11 +28,14 @@ exports.createTask = async (req, res) => {
                 assignedName: req.body.assignedName,
                 adminId: req.user._id,
                 adminName: req.user.name,
-                status: "pending"
+                status: "pending",
+                departament: req.user.departament
             }
 
 
            const newTask = await Task.create(taskContent);
+
+           console.log(newTask)
 
            res.status(201).json({
             newTask,
@@ -52,8 +61,12 @@ try{
         assignedId: req.user._id,
         status: "pending"
     });
+
+    const pendingTasks = true;
+
+    const mainTitle = "My tasks";
     
-    res.render("task/tasks", {userTasks});
+    res.render("task/tasks", {userTasks, pendingTasks, mainTitle});
 } catch(e) {
     res.send(e)
 }
@@ -65,8 +78,12 @@ exports.getTasksInReview = async (req, res) => {
             assignedId: req.user._id,
             status: "reviewing"
         });
+
+        const reviewTasks = true;
+
+        const mainTitle = "My tasks";
     
-        res.render("task/tasks", {userTasks});
+        res.render("task/tasks", {userTasks, reviewTasks, mainTitle});
     } catch(e) {
         res.send(e)
     }
@@ -78,8 +95,12 @@ exports.getFinishedTasks = async (req, res) => {
             assignedId: req.user._id,
             status: "done"
         });
+
+        const mainTitle = "My tasks";
+
+        const finishedTasks = true;
     
-        res.render("task/tasks", {userTasks});
+        res.render("task/tasks", {userTasks, mainTitle, finishedTasks});
     } catch(e) {
         res.send(e)
     }
@@ -166,7 +187,32 @@ exports.getTaskById = async (req, res) => {
 
          const userRole = req.user.role;
 
-        res.render("task/taskDescriptionPage", {task, FormatedDueDate, userRole });
+        let canViewTheDoneButton = () => {
+
+            if(task.status === "done") {
+                return false
+            }
+
+            if (task.status === "pending" && task.assignedId === req.user._id) {
+                return true
+            }
+
+            else if (task.status !== "pending" && req.user.role === "admin" || req.user.role === "supervisor" && task.adminId === req.user._id) {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+
+        let showDoneButton = canViewTheDoneButton()
+
+        const status = task.status;
+
+
+
+
+        res.render("task/taskDescriptionPage", {task, FormatedDueDate, userRole, showDoneButton, status });
         
     } catch (error) {
         res.send(error)
@@ -179,8 +225,12 @@ exports.getAssignedTasks = async (req,res) => {
         const userTasks = await Task.find({
             adminId: req.user._id
         });
+
+        const mainTitle = "Assigned tasks";
+
+        const pendingTasks = true;
     
-        res.render("task/tasks", {userTasks});
+        res.render("task/tasks", {userTasks, mainTitle, pendingTasks});
     } catch(e) {
         res.send(e)
     }
@@ -193,8 +243,12 @@ exports.getAssignedInReview = async (req,res) => {
             adminId: req.user._id,
             status: "reviewing"
         });
+
+        const reviewTasks = true;
+
+        const mainTitle = "Assigned tasks";
     
-        res.render("task/tasks", {userTasks});
+        res.render("task/tasks", {userTasks, mainTitle, reviewTasks});
     } catch(e) {
         res.send(e)
     }
@@ -207,8 +261,12 @@ exports.getFinishedAssignedTasks = async (req,res) => {
             adminId: req.user._id,
             status: "done"
         });
+
+        const finishedTasks = true;
+
+        const mainTitle = "Assigned tasks";
     
-        res.render("task/tasks", {userTasks});
+        res.render("task/tasks", {userTasks, mainTitle, finishedTasks});
     } catch(e) {
         res.send(e)
     }

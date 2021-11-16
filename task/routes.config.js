@@ -11,17 +11,17 @@ router.get("/newTask", authController.protect, authController.restricTo(["admin"
 
 router.put('/:taskId/status', authController.protect ,taskController.sendTaskToReview );
 
-router.get("/userTasks", authController.protect, taskController.getUserTasks );
+router.get("/userTasks/pending", authController.protect, taskController.getUserTasks );
 
 router.get("/userTasks/reviewing", authController.protect, taskController.getTasksInReview);
 
-router.get("/userTasks/done", authController.protect, taskController.getFinishedTasks );
+router.get("/userTasks/finished", authController.protect, taskController.getFinishedTasks );
 
-router.get("/assignedTasks", authController.protect, authController.restricTo(["admin","supervisor"]), taskController.getAssignedTasks );
+router.get("/assignedTasks/pending", authController.protect, authController.restricTo(["admin","supervisor"]), taskController.getAssignedTasks );
 
 router.get("/assignedTasks/reviewing", authController.protect, authController.restricTo(["admin","supervisor"]), taskController.getAssignedInReview );
 
-router.get("/assignedTasks/done", authController.protect, authController.restricTo(["admin","supervisor"]), taskController.getFinishedAssignedTasks );
+router.get("/assignedTasks/finished", authController.protect, authController.restricTo(["admin","supervisor"]), taskController.getFinishedAssignedTasks );
 
 router.get('/', taskController.getAlltasks );
 

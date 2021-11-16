@@ -37,10 +37,16 @@ document.getElementById("inputButton").addEventListener("click", async (e) => {
     e.preventDefault();
     let {taskName, assignedName, dueDate, taskDescription } = SelectedInputs;
 
-    console.log(SelectedInputs);
+    console.log(assignedName.value);
 
     const response = await httpRequest("http://localhost:4000/task", "POST", buildRequestBody(taskName.value, assignedName.value, dueDate.value, taskDescription.value));
     const data = await response.json();
     console.log(data)
+
+    if (data.status === "success") {
+        alert("Task successfully created");
+    } else {
+        alert("there was a problem creating the task");
+    }
 })
 

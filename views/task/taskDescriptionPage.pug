@@ -17,9 +17,11 @@ include ../includes/navbar
     h2= FormatedDueDate
     h6.id#id= task._id 
   p= task.description
-  p#role= userRole
-  .button-container
-    input#inputButton.form-button(type='submit' value='DONE')
+  p#role.id= userRole
+  p#status.id= status
+  if showDoneButton
+    .button-container
+      input#inputButton.form-button(type='submit' value='DONE')
 script(src='/scripts/taskDescriptionPage.js')
 script(src='/scripts/navbar.js')
 

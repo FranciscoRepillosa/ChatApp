@@ -1,8 +1,34 @@
+
+
+
+
 .form-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 200px;
+  margin-left:20%;
+  margin-right: 20%;
+}
+
+@media only screen and (max-width: 1000px) {
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 200px;
+    margin-left:10%;
+    margin-right: 10%;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .form-container {
     display: flex;
     flex-direction: column;
     margin-top: 200px;
   }
+}
+
   
   .form-input {
     outline: none !important;
@@ -31,5 +57,11 @@
   
   .form-label {
     margin-left: 10%;
+    margin-bottom: 30px;
+  }
+
+  #role {
+    margin-left: 10%;
+    margin-right: 10%;
     margin-bottom: 30px;
   }

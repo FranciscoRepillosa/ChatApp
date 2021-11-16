@@ -1,3 +1,13 @@
+textarea {
+  background-color: #9f71d808;
+  border-color: #a79bb71a;
+}
+
+.taskDate {
+  background-color: #9f71d808;
+  border-color: #a79bb71a;
+}
+
 .newTask-form-input {
     outline: none !important;
     padding: 0;
@@ -6,6 +16,7 @@
     border-right-style: none;
     border-bottom-style: none;
     margin-bottom: 30px;
+    background-color: #9f71d808;
 }
 
 .newTask-form-container {
@@ -15,6 +26,40 @@
     margin-right: 10%;
     display: flex;
     flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #9f71d81c;
+    border-radius: 30px;
+    border-color: #4c376675;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-width: 10px;
+    padding: 50px;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .newTask-form-container {
+      margin-top: 115px;
+      margin-bottom: 30px;
+      margin-left: 10%;
+      margin-right: 10%;
+      display: flex;
+      flex-direction: column;
+      margin-left: 10%;
+      margin-right: 10%;
+    }
+  }
+  
+  
+  @media only screen and (max-width: 768px) {
+    .newTask-form-container {
+      margin-top: 115px;
+      margin-bottom: 30px;
+      margin-left: 10%;
+      margin-right: 10%;
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .m-top {

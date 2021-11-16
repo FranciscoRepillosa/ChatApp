@@ -13,3 +13,8 @@ document.addEventListener("click", e => {
       dropdown.classList.remove("active")
     })
   })
+
+document.getElementById("logout").addEventListener("click", e => {
+  e.preventDefault();
+  console.log(document.cookie);
+})

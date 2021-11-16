@@ -7,12 +7,8 @@
   .dropdown(data-dropdown='')
     button.link(data-dropdown-button='') Tasks
     .dropdown-menu.information-grid
-      a(href='http://localhost:4000/task/userTasks') My task
-      a(href='http://localhost:4000/task/userTasks/reviewing') Task in review
-      a(href='http://localhost:4000/task/userTasks/done') Finished Tasks
-      a(href='http://localhost:4000/task/assignedTasks') assigned tasks
-      a(href='http://localhost:4000/task/assignedTasks/reviewing') assigned tasks in review
-      a(href='http://localhost:4000/task/assignedTasks/done') finished assigned tasks
+      a(href='http://localhost:4000/task/userTasks/pending') My task
+      a(href='http://localhost:4000/task/assignedTasks/pending') assigned tasks
       a(href='http://localhost:4000/task/newTask') New
   .dropdown(data-dropdown='')
     button.link(data-dropdown-button='') Comapny
@@ -21,5 +17,5 @@
   .dropdown(data-dropdown='')
     button.link(data-dropdown-button='') Account
     .dropdown-menu.information-grid
-      a(href='#') Logout
+      a#logout(href='#') Logout
       a(href='') Edit

@@ -83,7 +83,8 @@ exports.protect = catchAsync(async (req, res, next) => {
    }
 
    if (!token) {
-    next( new AppError('You are not logged in! Please log in to get access.', 401 ))
+    return res.redirect("http://localhost:4000/user/login")
+    //next( new AppError('You are not logged in! Please log in to get access.', 401 ))
    }
     
     
@@ -93,7 +94,8 @@ exports.protect = catchAsync(async (req, res, next) => {
 
    if(!CurrentUser) {
        console.log("no user");
-       return next(new AppError('The user belonging to this token does no longer exist', 401 ))
+       return res.redirect("http://localhost:4000/user/login")
+       //return next(new AppError('The user belonging to this token does no longer exist', 401 ))
    }
   /* 
    if(CurrentUser.changePasswordAfter(decoded.iat)) {
@@ -110,7 +112,8 @@ exports.restricTo = (role) => {
         console.log("user",req.user);
         console.log(role);
      if(role[0] !== req.user.role && role[1] !== req.user.role) {
-        return next(new AppError('You dont have permission to perform this action', 401 ))
+         return res.redirect("http://localhost:4000/")
+        //return next(new AppError('You dont have permission to perform this action', 401 ))
     }
       next();
     }

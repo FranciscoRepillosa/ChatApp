@@ -35,13 +35,18 @@ let buildRequestBody = (guestEmail, role, departament) => {
 
 document.getElementById("inputButton").addEventListener("click", async (e) => {
     e.preventDefault();
-    let {guestEmail, role, departament} = SelectedInputs;
+    let {guestEmail, departament} = SelectedInputs;
 
-    console.log(guestEmail.value, role.value, departament.value);
+    const role = document.getElementById("role");
 
     const response = await httpRequest("http://localhost:4000/invitation", "POST", buildRequestBody(guestEmail.value, role.value, departament.value));
     const data = await response.json();
     console.log(data)
- 
+    
+    if (data.status === "success") {
+        alert("Invitation successfully created");
+    } else {
+        alert("there was a problem creating the task");
+    }
 })
 

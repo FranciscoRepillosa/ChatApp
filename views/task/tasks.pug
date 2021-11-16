@@ -7,8 +7,21 @@ head
   link(rel='stylesheet' href='/styles/navbar.css')
   title Document
 include ../includes/navbar
+.button-container
+    if pendingTasks
+      input#inputButton.form-button.active(type='submit' value='pending')
+      input#inputButton.form-button(type='submit' value='reviewing')
+      input#inputButton.form-button(type='submit' value='finished')
+    if reviewTasks
+      input#inputButton.form-button(type='submit' value='pending')
+      input#inputButton.active.form-button(type='submit' value='peviewing')
+      input#inputButton.form-button(type='submit' value='finished')
+    if finishedTasks
+      input#inputButton.form-button(type='submit' value='pending')
+      input#inputButton.form-button(type='submit' value='reviewing')
+      input#inputButton.active.form-button(type='submit' value='finished')
 .mainTitle
-  h2 My tasks
+  h2= mainTitle
 hr
 ul
 each task in userTasks
