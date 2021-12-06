@@ -30,8 +30,14 @@ document.getElementById("inputButton").addEventListener("click", async (e) => {
     const data = await res.json();
     console.log(data);
     if(data.status === "success") {
-      alert("task has been submitted for review");
+      alert("task has been updated");
       console.log(data);
-      window.location.replace(`http://localhost:4000/task/userTasks/pending`)
+      if(newStatus() === "reviewing") {
+        window.location.replace(`http://localhost:4000/task/userTasks/reviewing`)
+      }
+      else{
+        window.location.replace(`http://localhost:4000/task/assignedTasks/done
+        `)
+      }
     }
 }) 
