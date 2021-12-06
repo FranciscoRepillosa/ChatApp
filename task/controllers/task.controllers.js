@@ -10,7 +10,7 @@ exports.createTask = async (req, res) => {
             const assigned = await User.findOne({name: req.body.assignedName, companyId: req.user.companyId});
 
             if (assigned === null) {
-                console.log("no assigned")
+                console.log("assigned user does not exist")
                 return next( new AppError('there is no user with this credentials in your company', 402));
             }
 
@@ -187,17 +187,22 @@ exports.getTaskById = async (req, res) => {
 
          const userRole = req.user.role;
 
+         console.log(task);
+         console.log(req.user);
+
         let canViewTheDoneButton = () => {
 
             if(task.status === "done") {
+                console.log("done");
                 return false
             }
 
-            if (task.status === "pending" && task.assignedId === req.user._id) {
+            if (task.status === "pending" && task.assignedId == req.user._id) {
+                console.log("pass")
                 return true
             }
 
-            else if (task.status !== "pending" && req.user.role === "admin" || req.user.role === "supervisor" && task.adminId === req.user._id) {
+            else if (task.status !== "pending" && req.user.role === "admin" || req.user.role === "supervisor" && task.adminId == req.user._id) {
                 return true
             }
             else {
@@ -205,12 +210,11 @@ exports.getTaskById = async (req, res) => {
             }
         }
 
-        let showDoneButton = canViewTheDoneButton()
+        let showDoneButton = canViewTheDoneButton();
 
         const status = task.status;
 
-
-
+        console.log(showDoneButton);
 
         res.render("task/taskDescriptionPage", {task, FormatedDueDate, userRole, showDoneButton, status });
         
@@ -223,7 +227,8 @@ exports.getAssignedTasks = async (req,res) => {
  
     try{
         const userTasks = await Task.find({
-            adminId: req.user._id
+            adminId: req.user._id,
+            status: "pending"
         });
 
         const mainTitle = "Assigned tasks";

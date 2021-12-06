@@ -11,12 +11,13 @@ include ../includes/navbar
 .newTask-form-container
   h1= task.name
   .dateAndAsigned-container2
-    h6 Assigned
+    h6 Assigned :
     h2= task.assignedName
-    h6 due date
+    h6 due date :
     h2= FormatedDueDate
-    h6.id#id= task._id 
-  p= task.description
+    h6.id#id= task._id
+  p Description:   
+  p=   task.description
   p#role.id= userRole
   p#status.id= status
   if showDoneButton

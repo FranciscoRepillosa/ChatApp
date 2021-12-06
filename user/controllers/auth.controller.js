@@ -43,8 +43,6 @@ exports.login = catchAsync(async (req, res, next) => {
     
     const { email, password } = req.body;
 
-    console.log(req.body);
-
     if(!email || !password) {
         return next(new AppError("Please provide email and pasword", 400));
     }
@@ -93,7 +91,6 @@ exports.protect = catchAsync(async (req, res, next) => {
    const CurrentUser = await User.findById(decoded.id);
 
    if(!CurrentUser) {
-       console.log("no user");
        return res.redirect("http://localhost:4000/user/login")
        //return next(new AppError('The user belonging to this token does no longer exist', 401 ))
    }
@@ -109,8 +106,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 
 exports.restricTo = (role) => {
     return (req, res, next) => {     
-        console.log("user",req.user);
-        console.log(role);
      if(role[0] !== req.user.role && role[1] !== req.user.role) {
          return res.redirect("http://localhost:4000/")
         //return next(new AppError('You dont have permission to perform this action', 401 ))
